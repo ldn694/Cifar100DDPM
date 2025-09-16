@@ -4,7 +4,7 @@ import torch.nn.functional as F
 from torchvision import transforms
 from diffusers import DDIMScheduler, UNet2DConditionModel
 from model.pipeline import ClassConditionalDDIMPipeline
-from settings import NULL_CLASS, NUM_CLASSES, image_size, batch_size
+from settings import NULL_CLASS, NUM_CLASSES, image_size, batch_size, NUM_EPOCHS
 import tqdm
 import matplotlib.pyplot as plt
 from utils import show_images
@@ -56,7 +56,7 @@ def main():
 
     p_uncond = 0.1  # classifier-free guidance dropout prob
 
-    for epoch in range(20):
+    for epoch in range(NUM_EPOCHS):
         tqdm_iter = tqdm.tqdm(train_dataloader, desc=f"Training epoch {epoch}")
         for step, batch in enumerate(tqdm_iter):
             clean_images, labels = batch

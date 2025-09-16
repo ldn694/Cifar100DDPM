@@ -3,7 +3,7 @@ import torchvision
 import torch.nn.functional as F
 from torchvision import transforms
 from diffusers import DDPMScheduler, UNet2DModel, DDPMPipeline
-from settings import image_size, batch_size
+from settings import image_size, batch_size, NUM_EPOCHS
 import tqdm
 import matplotlib.pyplot as plt
 from utils import show_images
@@ -51,7 +51,7 @@ def main():
     optimizer = torch.optim.AdamW(model.parameters(), lr=4e-4)
     losses = []
 
-    for epoch in range(20):
+    for epoch in range(NUM_EPOCHS):
         tqdm_iter = tqdm.tqdm(train_dataloader, desc=f"Training epoch {epoch}")
         for step, batch in enumerate(tqdm_iter):
             clean_images, _ = batch                   # <- tuple, not dict
