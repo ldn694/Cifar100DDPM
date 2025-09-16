@@ -3,6 +3,7 @@ import torchvision
 import torch.nn.functional as F
 from torchvision import transforms
 from diffusers import DDPMScheduler, UNet2DModel, DDPMPipeline
+from settings import image_size, batch_size
 import tqdm
 import matplotlib.pyplot as plt
 from utils import show_images
@@ -14,8 +15,6 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(device)
 
-    image_size = 32
-    batch_size = 64
 
     preprocess = transforms.Compose([
         transforms.Resize((image_size, image_size)),

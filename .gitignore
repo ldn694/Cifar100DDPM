@@ -4,3 +4,5 @@ ddpm-cifar100-32px/
 samples/
 pipeline_output/
 loss.png
+cifar100*
+*_output/

@@ -6,3 +6,4 @@ ftfy
 pyarrow==19.0.0
 matplotlib
 torchvision
+pytorch-fid
