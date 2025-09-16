@@ -80,7 +80,7 @@ def main():
             avg_losses = [np.mean(losses[i*num_batches:(i+1)*num_batches])
                           for i in range(epoch+1)]
             plt.figure(figsize=(8,5))
-            plt.plot(range(1, len(avg_losses)+1), avg_losses, marker='o')
+            plt.plot(range(1, len(avg_losses)+1), avg_losses)
             plt.xlabel('Epoch'); plt.ylabel('Average Loss'); plt.title('Training Loss per Epoch')
             plt.grid(True); plt.tight_layout()
             plt.savefig(f'loss.png')
@@ -100,6 +100,10 @@ def main():
             pil_images = show_images(sample)
             # Saved to "samples/epoch_{epoch+1}.png"
             pil_images.save(os.path.join(output_path, f'epoch_{epoch+1}.png'))
+        
+        if epoch % 5 == 4:
+            model.save_pretrained("ddpm-cifar100-32px")
+            noise_scheduler.save_pretrained("ddpm-cifar100-32px")
 
     model.save_pretrained("ddpm-cifar100-32px")
     noise_scheduler.save_pretrained("ddpm-cifar100-32px")

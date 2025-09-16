@@ -1,5 +1,6 @@
 import torch
 from diffusers import UNet2DModel, DDPMScheduler, DDPMPipeline
+from settings import NUM_CLASSES
 from utils import show_images
 import os
 
