@@ -1,4 +1,6 @@
 __pycache__/
 data/
 ddpm-cifar100-32px/
-samples
+samples/
+pipeline_output/
+loss.png
